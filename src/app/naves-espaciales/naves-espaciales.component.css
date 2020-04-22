@@ -1,0 +1,76 @@
+
+.cuerpo{
+    width: 100%;
+    height: auto;
+    background-color: black;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  
+  }
+  
+  .example-full-width {
+    width: 90%;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: white;
+  }
+  
+  .example-card {
+      max-width: 400px;
+      box-shadow: yellow 3px 3px 3px;
+      margin: 1%;
+    }
+    
+    .example-header-image {
+      background-image: url('../../assets/imagenes/navesperfil.png');
+      background-size: cover;
+    }
+  
+  .titulo{
+  width: 100%;
+  }
+  
+  #contenedortit{
+    width:auto;
+      height:auto;
+      margin:0px auto;
+      text-align:center;
+  }
+  #contenedortit img{
+    vertical-align: middle;
+    width: 100%;
+  }
+  .cont{
+  padding: 3%;
+  }
+  table{
+    width: 100%;
+  }
+  @media screen and (max-width: 600px) {
+    table {
+        width:100%;
+    }
+    thead {
+        display: none;
+    }
+    tr:nth-of-type(2n) {
+        background-color: inherit;
+    }
+    tr td:first-child {
+        background: #f0f0f0;
+        font-weight:bold;
+        font-size:1.3em;
+    }
+    tbody td {
+        display: block;
+        text-align:center;
+    }
+    tbody td:before {
+        content: attr(data-th);
+        display: block;
+        text-align:center;
+    }
+  }
