@@ -7,151 +7,46 @@
         </mat-form-field>
     </div>
     <div class="cont">
-    <table>
-        <tbody>
-            <tr>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Clasificación</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Altura:   Media de vida: <br>
-                            Color de ojos: <br>
-                            Color de cabello: <br>
-                            Color de piel: <br>
-                        </p>
-                        <p>
-                            Idioma: <br>
-                            Planeta en que habita: <br>
-                            Personajes que pertenecen a esta especie: <br>
-                            Películas en las que aparece esta especie:
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Clasificación</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Altura:   Media de vida: <br>
-                            Color de ojos: <br>
-                            Color de cabello: <br>
-                            Color de piel: <br>
-                        </p>
-                        <p>
-                            Idioma: <br>
-                            Planeta en que habita: <br>
-                            Personajes que pertenecen a esta especie: <br>
-                            Películas en las que aparece esta especie:
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Clasificación</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Altura:   Media de vida: <br>
-                            Color de ojos: <br>
-                            Color de cabello: <br>
-                            Color de piel: <br>
-                        </p>
-                        <p>
-                            Idioma: <br>
-                            Planeta en que habita: <br>
-                            Personajes que pertenecen a esta especie: <br>
-                            Películas en las que aparece esta especie:
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Clasificación</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Altura:   Media de vida: <br>
-                            Color de ojos: <br>
-                            Color de cabello: <br>
-                            Color de piel: <br>
-                        </p>
-                        <p>
-                            Idioma: <br>
-                            Planeta en que habita: <br>
-                            Personajes que pertenecen a esta especie: <br>
-                            Películas en las que aparece esta especie:
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Clasificación</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Altura:   Media de vida: <br>
-                            Color de ojos: <br>
-                            Color de cabello: <br>
-                            Color de piel: <br>
-                        </p>
-                        <p>
-                            Idioma: <br>
-                            Planeta en que habita: <br>
-                            Personajes que pertenecen a esta especie: <br>
-                            Películas en las que aparece esta especie:
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Clasificación</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Altura:   Media de vida: <br>
-                            Color de ojos: <br>
-                            Color de cabello: <br>
-                            Color de piel: <br>
-                        </p>
-                        <p>
-                            Idioma: <br>
-                            Planeta en que habita: <br>
-                            Personajes que pertenecen a esta especie: <br>
-                            Películas en las que aparece esta especie:
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-            </tr>
-    </table>
+        <div class="cont">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let espobj of filteredEspecieList; let i=index" >
+                  <mat-expansion-panel-header>
+                    <img class="especieperfil" src="../../assets/imagenes/especiesperfil.png" /> 
+                    {{i+1}} : {{espobj.name}}
+                  </mat-expansion-panel-header>
+                  <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar ></div>
+                      <mat-card-title>{{espobj.name}}</mat-card-title>
+                      <mat-card-subtitle>Clasificación: {{espobj.classification}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p>
+                        Rastreo de apertura: {{espobj.designation}} <br>
+                        Altura promedio:  {{espobj.average_height}} <br>
+                        Esperanza de vida promedio:  {{espobj.average_lifespan}} <br>
+                        Color de ojos:  {{espobj.eye_colors}} <br>
+                        Color de cabello:  {{espobj.hair_colors}} <br>
+                        Color de piel:  {{espobj.skin_colors}} <br>
+                        Lenguaje:  {{espobj.language}} <br>
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                    </mat-card-actions>
+                  </mat-card>
+                </mat-expansion-panel>
+              
+            </mat-accordion>
+            <div class="controles">
+                <button mat-button (click)="getEspecies(actual-1)"><span class="material-icons">
+                    arrow_back_ios
+                    </span>Anterior</button>
+                <label class="label">Página: {{actual}}</label>
+                <button mat-button (click)="getEspecies(actual+1)" >Siguiente <span class="material-icons">
+                    arrow_forward_ios
+                    </span></button>
+            </div>
+        </div>
     </div>
 </div>
   

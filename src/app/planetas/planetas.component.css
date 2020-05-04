@@ -1,0 +1,50 @@
+
+.cuerpo{
+    width: 100%;
+    height: auto;
+    background-color: black;
+  }
+  .label{
+    color: white;
+    font-weight: bold;
+    
+    height: 16px;
+  }
+
+  mat-expansion-panel{
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+    .example-header-image {
+      background-image: url('../../assets/imagenes/planetasperfil.png');
+      background-size: cover;
+    }
+    .planetaperfil{
+      width: 7vh;
+    }
+    button{
+      color: white;
+    }
+.controles{
+    background-color: #3f51b5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+  .titulo{
+  width: 100%;
+  }
+  #contenedortit{
+    width:auto;
+      height:auto;
+      margin:0px auto;
+      text-align:center;
+  }
+  #contenedortit img{
+    vertical-align: middle;
+    width: 70%;
+  }
+  .cont{
+  padding: 3%;
+  }
+ 
+ 

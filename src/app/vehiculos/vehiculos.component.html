@@ -1,1 +1,46 @@
-<p>vehiculos works!</p>
+<div class="cuerpo">
+    <div id="contenedortit">
+        <img src="../../assets/imagenes/vehiculos.png" />
+    </div>
+        <div class="cont">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let vehobj of filteredVehiculoList; let i=index" >
+                  <mat-expansion-panel-header>
+                    <img class="vehiculoperfil" src="../../assets/imagenes/vehiculosperfil.png" /> 
+                    {{i+1}} : {{vehobj.name}}
+                  </mat-expansion-panel-header>
+                  <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>{{vehobj.name}}</mat-card-title>
+                      <mat-card-subtitle>Modelo: {{vehobj.model}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p>
+                        Clase de vehiculo: {{vehobj.vehicle_class}} <br>
+                        Fabricante:  {{vehobj.manufacturer}} <br>
+                        Longitud:  {{vehobj.length}} <br>
+                        Costo:  {{vehobj.cost_in_credits}} <br>
+                        Personas necesarias para su funcionamiento:  {{vehobj.crew}} <br>
+                        Capacidad de personas:  {{vehobj.passengers}} <br>
+                        Velocidad máxima en la atmósfera:  {{vehobj.max_atmosphering_speed}} <br>
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                    </mat-card-actions>
+                  </mat-card>
+                </mat-expansion-panel>
+              
+            </mat-accordion>
+            <div class="controles">
+                <button mat-button (click)="getVehicles(actual-1)"><span class="material-icons">
+                    arrow_back_ios
+                    </span>Anterior</button>
+                <label class="label">Página: {{actual}}</label>
+                <button mat-button (click)="getVehicles(actual+1)" >Siguiente <span class="material-icons">
+                    arrow_forward_ios
+                    </span></button>
+            </div>
+        </div>
+</div>
+      

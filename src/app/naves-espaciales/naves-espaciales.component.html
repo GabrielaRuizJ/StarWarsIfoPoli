@@ -7,163 +7,43 @@
         </mat-form-field>
     </div>
     <div class="cont">
-    <table>
-        <tbody>
-            <tr>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Modelo </mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Clase:  <br>
-                            Fabricante/s: <br>
-                            Costo: <br>
-                            Longitud: <br>
-                            Personas necesarias para pilotear esta nave: <br>
-                            Pasajeros que transporta: <br>
-                            Velocidad máxima de atmosfera <br>
-                            Carga máxima: <br>
-                        </p>
-                        <p>
-                            Personajes que pilotearon esta nave: <br>
-                            Películas en las que sale esta nave: <br>
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Modelo </mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Clase:  <br>
-                            Fabricante/s: <br>
-                            Costo: <br>
-                            Longitud: <br>
-                            Personas necesarias para pilotear esta nave: <br>
-                            Pasajeros que transporta: <br>
-                            Velocidad máxima de atmosfera <br>
-                            Carga máxima: <br>
-                        </p>
-                        <p>
-                            Personajes que pilotearon esta nave: <br>
-                            Películas en las que sale esta nave: <br>
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Modelo </mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Clase:  <br>
-                            Fabricante/s: <br>
-                            Costo: <br>
-                            Longitud: <br>
-                            Personas necesarias para pilotear esta nave: <br>
-                            Pasajeros que transporta: <br>
-                            Velocidad máxima de atmosfera <br>
-                            Carga máxima: <br>
-                        </p>
-                        <p>
-                            Personajes que pilotearon esta nave: <br>
-                            Películas en las que sale esta nave: <br>
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Modelo </mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Clase:  <br>
-                            Fabricante/s: <br>
-                            Costo: <br>
-                            Longitud: <br>
-                            Personas necesarias para pilotear esta nave: <br>
-                            Pasajeros que transporta: <br>
-                            Velocidad máxima de atmosfera <br>
-                            Carga máxima: <br>
-                        </p>
-                        <p>
-                            Personajes que pilotearon esta nave: <br>
-                            Películas en las que sale esta nave: <br>
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Modelo </mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Clase:  <br>
-                            Fabricante/s: <br>
-                            Costo: <br>
-                            Longitud: <br>
-                            Personas necesarias para pilotear esta nave: <br>
-                            Pasajeros que transporta: <br>
-                            Velocidad máxima de atmosfera <br>
-                            Carga máxima: <br>
-                        </p>
-                        <p>
-                            Personajes que pilotearon esta nave: <br>
-                            Películas en las que sale esta nave: <br>
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-                <td>
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Nombre</mat-card-title>
-                        <mat-card-subtitle>Modelo </mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                        <p>
-                            Clase:  <br>
-                            Fabricante/s: <br>
-                            Costo: <br>
-                            Longitud: <br>
-                            Personas necesarias para pilotear esta nave: <br>
-                            Pasajeros que transporta: <br>
-                            Velocidad máxima de atmosfera <br>
-                            Carga máxima: <br>
-                        </p>
-                        <p>
-                            Personajes que pilotearon esta nave: <br>
-                            Películas en las que sale esta nave: <br>
-                        </p>
-                        </mat-card-content>
-                    </mat-card>
-                </td>
-            </tr>
-    </table>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let naveobj of filteredNavesList; let i=index" >
+              <mat-expansion-panel-header>
+                <img class="naveperfil" src="../../assets/imagenes/navesperfil.png" /> 
+                {{i+1}} : {{naveobj.name}}
+              </mat-expansion-panel-header>
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <div mat-card-avatar></div>
+                  <mat-card-title>{{naveobj.name}}</mat-card-title>
+                  <mat-card-subtitle>Modelo:{{naveobj.model}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    Clase: {{naveobj.starship_class}} <br>
+                    Fabricante: {{naveobj.manufacturer}} <br>
+                    Costo:  {{naveobj.cost_in_credits}} <br>
+                    Longitud:  {{naveobj.length}} <br>
+                    Personas necesarias para su funcionamiento:  {{naveobj.crew}} <br>
+                    Capacidad de personas:  {{naveobj.passengers}} <br>
+                    Velocidad máxima en la atmósfera:  {{naveobj.max_atmosphering_speed}} <br>
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                </mat-card-actions>
+              </mat-card>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <div class="controles">
+            <button mat-button (click)="getStarShip(actual-1)"><span class="material-icons">
+                arrow_back_ios
+                </span>Anterior</button>
+            <label class="label">Página: {{actual}}</label>
+            <button mat-button (click)="getStarShip(actual+1)" >Siguiente <span class="material-icons">
+                arrow_forward_ios
+                </span></button>
+        </div>
     </div>
 </div>
   

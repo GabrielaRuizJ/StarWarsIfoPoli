@@ -21,7 +21,7 @@ mat-expansion-panel{
 .personajaperfil{
   width: 7vh;
 }
-button{
+.controles>button{
   color: white;
 }
   .controles{

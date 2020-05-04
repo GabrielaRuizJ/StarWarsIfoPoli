@@ -1,8 +1,8 @@
 <div class="cuerpo">
     <div id="contenedortit">
         <img src="../../assets/imagenes/personajes.png" />
-        
     </div>
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)" >Buscar un personaje</button>
     <div class="cont">
         <mat-accordion>
             <mat-expansion-panel *ngFor="let personobj of filteredPersonList; let i=index" >
@@ -12,7 +12,7 @@
               </mat-expansion-panel-header>
               <mat-card class="example-card">
                 <mat-card-header>
-                  <div mat-card-avatar style="background-image: url('../../assets/imagenes/{{personobj.name}}.png');
+                  <div mat-card-avatar style="background-image: url('../../assets/imagenes/personajesperfil.png');
                   background-size: cover;"></div>
                   <mat-card-title>{{personobj.name}}</mat-card-title>
                   <mat-card-subtitle>Fecha de nacimiento:{{personobj.birth_year}}</mat-card-subtitle>
@@ -35,14 +35,78 @@
           
         </mat-accordion>
         <div class="controles">
-            <button mat-button (click)="getPerson(actual-1)"><span class="material-icons">
+            <button class="controlboton" mat-button (click)="getPerson(actual-1)"><span class="material-icons">
                 arrow_back_ios
                 </span>Anterior</button>
-            <label class="label">Página: {{actual}}</label>
+            <label class="controlboton" class="label">Página: {{actual}}</label>
             <button mat-button (click)="getPerson(actual+1)" >Siguiente <span class="material-icons">
                 arrow_forward_ios
                 </span></button>
         </div>
     </div>
 </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Personaje</label>
+        <div class="input-group">
+          <input id="dateOfBirth"  type="search" class="form-control" [(ngModel)]='busqueda'  placeholder="Nombre del personaje" name="dp">
+          <div class="input-group-append">
+            <button mat-button (click)="getOnePerson(1)"  type="button">
+              <span class="material-icons">
+                search
+                </span>
+            </button>
+          </div>        
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let personobj2 of filteredPersonList2; let i=index" >
+            <mat-expansion-panel-header>
+              <img class="personajaperfil" src="../../assets/imagenes/personajesperfil.png" /> 
+              {{i+1}} : {{personobj2.name}}
+            </mat-expansion-panel-header>
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar style="background-image: url('../../assets/imagenes/personajesperfil.png');
+                background-size: cover;"></div>
+                <mat-card-title>{{personobj2.name}}</mat-card-title>
+                <mat-card-subtitle>Fecha de nacimiento:{{personobj2.birth_year}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  Color de ojos: {{personobj2.eye_color}} <br>
+                  Género:  {{personobj2.gender}} <br>
+                  Color de cabello:  {{personobj2.hair_color}} <br>
+                  Altura:  {{personobj2.height}} <br>
+                  Peso:  {{personobj2.mass}} <br>
+                  Color de piel:  {{personobj2.skin_color}} <br>
+                  Mundo de origen:  {{personobj2.homeworld}} <br>
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="controles">
+            <button class="controlboton" mat-button (click)="getOnePerson(actual2-1)"><span class="material-icons">
+                arrow_back_ios
+                </span>Anterior</button>
+            <label class="controlboton" class="label">Página: {{actual2}}</label>
+            <button mat-button (click)="getOnePerson(actual2+1)" >Siguiente <span class="material-icons">
+                arrow_forward_ios
+                </span></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ng-template>
   

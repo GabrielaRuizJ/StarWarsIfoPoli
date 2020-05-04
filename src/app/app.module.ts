@@ -29,6 +29,7 @@ import { EspeciesComponent } from './especies/especies.component';
 import { PlanetasComponent } from './planetas/planetas.component';
 //Services
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
@@ -71,7 +72,8 @@ const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
