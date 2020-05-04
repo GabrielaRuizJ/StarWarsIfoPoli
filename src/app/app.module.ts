@@ -11,6 +11,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { FormsModule } from "@angular/forms"
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
+
 
 //Componentes
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -22,6 +27,9 @@ import { NavesEspacialesComponent } from './naves-espaciales/naves-espaciales.co
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
 import { EspeciesComponent } from './especies/especies.component';
 import { PlanetasComponent } from './planetas/planetas.component';
+//Services
+import { HttpClientModule } from '@angular/common/http';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent,pathMatch:'full' },
@@ -50,8 +58,13 @@ const routes: Routes = [
     PlanetasComponent
   ],
   imports: [
+    MatTableModule,
+    MatGridListModule,
     MatSidenavModule,
     MatInputModule,
+    MatExpansionModule,
+    FormsModule,
+    HttpClientModule,
     MatListModule,
     MatToolbarModule,
     MatIconModule,
