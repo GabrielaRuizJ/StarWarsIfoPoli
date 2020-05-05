@@ -1,33 +1,32 @@
 <div class="cuerpo">
     <div id="contenedortit">
         <img src="../../assets/imagenes/navesespaciales.png" />
-        <mat-form-field class="example-full-width">
-            <mat-label>Buscar un una nave</mat-label>
-            <input type="search" matInput placeholder="Nombre de la nave o modelo"/>
-        </mat-form-field>
     </div>
+    <div class="cont" style="display: grid;">
+      <button style="float: right;" mat-flat-button color="primary" (click)="open(content)" >Buscar una nave</button>
+    </div> 
     <div class="cont">
         <mat-accordion>
             <mat-expansion-panel *ngFor="let naveobj of filteredNavesList; let i=index" >
               <mat-expansion-panel-header>
                 <img class="naveperfil" src="../../assets/imagenes/navesperfil.png" /> 
-                {{i+1}} : {{naveobj.name}}
+                {{naveobj.name}}
               </mat-expansion-panel-header>
               <mat-card class="example-card">
                 <mat-card-header>
-                  <div mat-card-avatar></div>
+                  <div mat-card-avatar class="example-header-image"></div>
                   <mat-card-title>{{naveobj.name}}</mat-card-title>
-                  <mat-card-subtitle>Modelo:{{naveobj.model}}</mat-card-subtitle>
+                  <mat-card-subtitle><strong>Modelo:</strong>{{naveobj.model}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
                   <p>
-                    Clase: {{naveobj.starship_class}} <br>
-                    Fabricante: {{naveobj.manufacturer}} <br>
-                    Costo:  {{naveobj.cost_in_credits}} <br>
-                    Longitud:  {{naveobj.length}} <br>
-                    Personas necesarias para su funcionamiento:  {{naveobj.crew}} <br>
-                    Capacidad de personas:  {{naveobj.passengers}} <br>
-                    Velocidad máxima en la atmósfera:  {{naveobj.max_atmosphering_speed}} <br>
+                    <strong>Clase:</strong> {{naveobj.starship_class}} <br>
+                    <strong>Fabricante: </strong>{{naveobj.manufacturer}} <br>
+                    <strong>Costo:</strong>  {{naveobj.cost_in_credits}} <br>
+                    <strong>Longitud: </strong>{{naveobj.length}} <br>
+                    <strong>Personas necesarias para su funcionamiento:</strong>  {{naveobj.crew}} <br>
+                    <strong>Capacidad de personas:</strong>  {{naveobj.passengers}} <br>
+                    <strong>Velocidad máxima en la atmósfera: </strong> {{naveobj.max_atmosphering_speed}} <br>
                   </p>
                 </mat-card-content>
                 <mat-card-actions>
@@ -47,3 +46,66 @@
     </div>
 </div>
   
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Naves espaciales</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Nave espacial</label>
+        <div class="input-group">
+          <input id="dateOfBirth"  type="search" class="form-control" [(ngModel)]='busqueda'  placeholder="Nombre de la nave o modelo" name="dp">
+          <div class="input-group-append">
+            <button mat-button (click)="getOneStarShip(1)"  type="button">
+              <span class="material-icons">
+                search
+                </span>
+            </button>
+          </div>        
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let navobj2 of filteredNavesList2; let i=index" >
+            <mat-expansion-panel-header>
+              <img class="naveperfil" src="../../assets/imagenes/navesperfil.png" /> 
+              {{navobj2.name}}
+            </mat-expansion-panel-header>
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{navobj2.name}}</mat-card-title>
+                <mat-card-subtitle><strong>Modelo:</strong>{{navobj2.model}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  <strong>Clase:</strong> {{navobj2.starship_class}} <br>
+                  <strong>Fabricante: </strong>{{navobj2.manufacturer}} <br>
+                  <strong>Costo:</strong>  {{navobj2.cost_in_credits}} <br>
+                  <strong>Longitud: </strong>{{navobj2.length}} <br>
+                  <strong>Personas necesarias para su funcionamiento:</strong>  {{navobj2.crew}} <br>
+                  <strong>Capacidad de personas:</strong>  {{navobj2.passengers}} <br>
+                  <strong>Velocidad máxima en la atmósfera: </strong> {{navobj2.max_atmosphering_speed}} <br>
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="controles">
+            <button class="controlboton" mat-button (click)="getOneStarShip(actual2-1)"><span class="material-icons">
+                arrow_back_ios
+                </span>Anterior</button>
+            <label class="controlboton" class="label">Página: {{actual2}}</label>
+            <button mat-button (click)="getOneStarShip(actual2+1)" >Siguiente <span class="material-icons">
+                arrow_forward_ios
+                </span></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ng-template>

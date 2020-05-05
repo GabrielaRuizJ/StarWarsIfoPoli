@@ -2,25 +2,28 @@
     <div id="contenedortit">
         <img src="../../assets/imagenes/peliculas.png" />
     </div>
+    <div class="cont" style="display: grid;">
+      <button style="float: right;" mat-flat-button color="primary" (click)="open(content)" >Buscar una pelicula</button>
+    </div> 
         <div class="cont">
             <mat-accordion>
                 <mat-expansion-panel *ngFor="let filmobj of filteredFilmList; let i=index" >
                   <mat-expansion-panel-header>
                     <img class="peliculaperfil" src="../../assets/imagenes/peliculasperfil.png" /> 
-                    {{i+1}} : {{filmobj.title}}
+                     {{filmobj.title}}
                   </mat-expansion-panel-header>
                   <mat-card class="example-card">
                     <mat-card-header>
-                      <div mat-card-avatar ></div>
+                      <div mat-card-avatar class="example-header-image"></div>
                       <mat-card-title>{{filmobj.title}}</mat-card-title>
-                      <mat-card-subtitle>Espisodio:{{filmobj.episode_id}}</mat-card-subtitle>
+                      <mat-card-subtitle><strong>Episodio:</strong> {{filmobj.episode_id}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                       <p>
-                        Rastreo de apertura: {{filmobj.opening_crawl}} <br>
-                        Director:  {{filmobj.director}} <br>
-                        Productor:  {{filmobj.producer}} <br>
-                        Fecha de lanzamiento:  {{filmobj.release_date}} <br>
+                        <strong>de apertura:</strong>  {{filmobj.opening_crawl}} <br>
+                        <strong>Director: </strong>  {{filmobj.director}} <br>
+                        <strong>Productor: </strong>  {{filmobj.producer}} <br>
+                        <strong>Fecha de lanzamiento: </strong>  {{filmobj.release_date}} <br>
                       </p>
                     </mat-card-content>
                     <mat-card-actions>
@@ -40,4 +43,64 @@
             </div>
         </div>
 </div>
-      
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Peliculas</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Pelicula</label>
+        <div class="input-group">
+          <input id="dateOfBirth"  type="search" class="form-control" [(ngModel)]='busqueda'  placeholder="Nombre de la pelicula" name="dp">
+          <div class="input-group-append">
+            <button mat-button (click)="getOneFilm(1)"  type="button">
+              <span class="material-icons">
+                search
+                </span>
+            </button>
+          </div>        
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let filmobj2 of filteredFilmList2; let i=index" >
+            <mat-expansion-panel-header>
+              <img class="peliculaperfil" src="../../assets/imagenes/peliculasperfil.png" /> 
+              {{filmobj2.title}}
+            </mat-expansion-panel-header>
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{filmobj2.title}}</mat-card-title>
+                <mat-card-subtitle><strong>Episodio:</strong> {{filmobj2.episode_id}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  <strong>de apertura:</strong>  {{filmobj2.opening_crawl}} <br>
+                  <strong>Director: </strong>  {{filmobj2.director}} <br>
+                  <strong>Productor: </strong>  {{filmobj2.producer}} <br>
+                  <strong>Fecha de lanzamiento: </strong>  {{filmobj2.release_date}} <br>
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="controles">
+            <button class="controlboton" mat-button (click)="getOneFilm(actual2-1)"><span class="material-icons">
+                arrow_back_ios
+                </span>Anterior</button>
+            <label class="controlboton" class="label">Página: {{actual2}}</label>
+            <button mat-button (click)="getOneFilm(actual2+1)" >Siguiente <span class="material-icons">
+                arrow_forward_ios
+                </span></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ng-template>

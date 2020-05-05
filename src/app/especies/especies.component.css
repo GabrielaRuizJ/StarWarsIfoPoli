@@ -22,7 +22,7 @@ mat-expansion-panel{
   .especieperfil{
     width: 7vh;
   }
-  button{
+  .controles>button{
     color: white;
   }
     .controles{

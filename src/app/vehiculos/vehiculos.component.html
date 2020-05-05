@@ -2,28 +2,31 @@
     <div id="contenedortit">
         <img src="../../assets/imagenes/vehiculos.png" />
     </div>
+    <div class="cont" style="display: grid;">
+      <button style="float: right;" mat-flat-button color="primary" (click)="open(content)" >Buscar un vehiculo</button>
+    </div> 
         <div class="cont">
             <mat-accordion>
                 <mat-expansion-panel *ngFor="let vehobj of filteredVehiculoList; let i=index" >
                   <mat-expansion-panel-header>
                     <img class="vehiculoperfil" src="../../assets/imagenes/vehiculosperfil.png" /> 
-                    {{i+1}} : {{vehobj.name}}
+                    {{vehobj.name}}
                   </mat-expansion-panel-header>
                   <mat-card class="example-card">
                     <mat-card-header>
                       <div mat-card-avatar class="example-header-image"></div>
                       <mat-card-title>{{vehobj.name}}</mat-card-title>
-                      <mat-card-subtitle>Modelo: {{vehobj.model}}</mat-card-subtitle>
+                      <mat-card-subtitle><strong>Modelo: </strong>{{vehobj.model}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                       <p>
-                        Clase de vehiculo: {{vehobj.vehicle_class}} <br>
-                        Fabricante:  {{vehobj.manufacturer}} <br>
-                        Longitud:  {{vehobj.length}} <br>
-                        Costo:  {{vehobj.cost_in_credits}} <br>
-                        Personas necesarias para su funcionamiento:  {{vehobj.crew}} <br>
-                        Capacidad de personas:  {{vehobj.passengers}} <br>
-                        Velocidad máxima en la atmósfera:  {{vehobj.max_atmosphering_speed}} <br>
+                        <strong>Clase de vehiculo:</strong> {{vehobj.vehicle_class}} <br>
+                        <strong>Fabricante:</strong>  {{vehobj.manufacturer}} <br>
+                        <strong>Longitud:</strong>  {{vehobj.length}} <br>
+                        <strong>Costo: </strong> {{vehobj.cost_in_credits}} <br>
+                        <strong>Personas necesarias para su funcionamiento:</strong>  {{vehobj.crew}} <br>
+                        <strong>Capacidad de personas: </strong> {{vehobj.passengers}} <br>
+                        <strong>Velocidad máxima en la atmósfera:</strong>  {{vehobj.max_atmosphering_speed}} <br>
                       </p>
                     </mat-card-content>
                     <mat-card-actions>
@@ -43,4 +46,66 @@
             </div>
         </div>
 </div>
-      
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Vehiculos</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Vehiculo</label>
+        <div class="input-group">
+          <input id="dateOfBirth"  type="search" class="form-control" [(ngModel)]='busqueda'  placeholder="Nombre del vehiculo o modelo" name="dp">
+          <div class="input-group-append">
+            <button mat-button (click)="getOneVehiculo(1)"  type="button">
+              <span class="material-icons">
+                search
+                </span>
+            </button>
+          </div>        
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let vehobj2 of filteredVehiculoList2; let i=index" >
+            <mat-expansion-panel-header>
+              <img class="vehiculoperfil" src="../../assets/imagenes/vehiculosperfil.png" /> 
+              {{vehobj2.name}}
+            </mat-expansion-panel-header>
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{vehobj2.name}}</mat-card-title>
+                <mat-card-subtitle><strong>Modelo: </strong>{{vehobj2.model}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  <strong>Clase de vehiculo:</strong> {{vehobj2.vehicle_class}} <br>
+                  <strong>Fabricante:</strong>  {{vehobj2.manufacturer}} <br>
+                  <strong>Longitud:</strong>  {{vehobj2.length}} <br>
+                  <strong>Costo: </strong> {{vehobj2.cost_in_credits}} <br>
+                  <strong>Personas necesarias para su funcionamiento:</strong>  {{vehobj2.crew}} <br>
+                  <strong>Capacidad de personas: </strong> {{vehobj2.passengers}} <br>
+                  <strong>Velocidad máxima en la atmósfera:</strong>  {{vehobj2.max_atmosphering_speed}} <br>
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="controles">
+            <button class="controlboton" mat-button (click)="getOneVehiculo(actual2-1)"><span class="material-icons">
+                arrow_back_ios
+                </span>Anterior</button>
+            <label class="controlboton" class="label">Página: {{actual2}}</label>
+            <button mat-button (click)="getOneVehiculo(actual2+1)" >Siguiente <span class="material-icons">
+                arrow_forward_ios
+                </span></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ng-template>

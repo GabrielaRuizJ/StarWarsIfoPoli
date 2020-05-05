@@ -2,30 +2,32 @@
     <div id="contenedortit">
         <img src="../../assets/imagenes/personajes.png" />
     </div>
-    <button class="btn btn-lg btn-outline-primary" (click)="open(content)" >Buscar un personaje</button>
+    <div class="cont" style="display: grid;">
+      <button style="float: right;" mat-flat-button color="primary" (click)="open(content)" >Buscar un personaje</button>
+    </div> 
+    
     <div class="cont">
-        <mat-accordion>
+       <mat-accordion>
             <mat-expansion-panel *ngFor="let personobj of filteredPersonList; let i=index" >
               <mat-expansion-panel-header>
                 <img class="personajaperfil" src="../../assets/imagenes/personajesperfil.png" /> 
-                {{i+1}} : {{personobj.name}}
+                <span style="vertical-align: middle;">{{personobj.name}}</span>
               </mat-expansion-panel-header>
               <mat-card class="example-card">
                 <mat-card-header>
                   <div mat-card-avatar style="background-image: url('../../assets/imagenes/personajesperfil.png');
                   background-size: cover;"></div>
                   <mat-card-title>{{personobj.name}}</mat-card-title>
-                  <mat-card-subtitle>Fecha de nacimiento:{{personobj.birth_year}}</mat-card-subtitle>
+                  <mat-card-subtitle><strong>Fecha de nacimiento:</strong> {{personobj.birth_year}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
                   <p>
-                    Color de ojos: {{personobj.eye_color}} <br>
-                    Género:  {{personobj.gender}} <br>
-                    Color de cabello:  {{personobj.hair_color}} <br>
-                    Altura:  {{personobj.height}} <br>
-                    Peso:  {{personobj.mass}} <br>
-                    Color de piel:  {{personobj.skin_color}} <br>
-                    Mundo de origen:  {{personobj.homeworld}} <br>
+                    <strong>Color de ojos:</strong> {{personobj.eye_color}} <br>
+                    <strong>Género:</strong>  {{personobj.gender}} <br>
+                    <strong>Color de cabello:</strong>  {{personobj.hair_color}} <br>
+                    <strong>Altura:</strong>  {{personobj.height}} <br>
+                    <strong>Peso: </strong> {{personobj.mass}} <br>
+                    <strong>Color de piel:</strong>  {{personobj.skin_color}} <br>
                   </p>
                 </mat-card-content>
                 <mat-card-actions>
@@ -47,7 +49,7 @@
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Personaje</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -70,24 +72,23 @@
           <mat-expansion-panel *ngFor="let personobj2 of filteredPersonList2; let i=index" >
             <mat-expansion-panel-header>
               <img class="personajaperfil" src="../../assets/imagenes/personajesperfil.png" /> 
-              {{i+1}} : {{personobj2.name}}
+              {{personobj2.name}}
             </mat-expansion-panel-header>
             <mat-card class="example-card">
               <mat-card-header>
                 <div mat-card-avatar style="background-image: url('../../assets/imagenes/personajesperfil.png');
                 background-size: cover;"></div>
                 <mat-card-title>{{personobj2.name}}</mat-card-title>
-                <mat-card-subtitle>Fecha de nacimiento:{{personobj2.birth_year}}</mat-card-subtitle>
+                <mat-card-subtitle><strong>Fecha de nacimiento:</strong> {{personobj2.birth_year}}</mat-card-subtitle>
               </mat-card-header>
               <mat-card-content>
                 <p>
-                  Color de ojos: {{personobj2.eye_color}} <br>
-                  Género:  {{personobj2.gender}} <br>
-                  Color de cabello:  {{personobj2.hair_color}} <br>
-                  Altura:  {{personobj2.height}} <br>
-                  Peso:  {{personobj2.mass}} <br>
-                  Color de piel:  {{personobj2.skin_color}} <br>
-                  Mundo de origen:  {{personobj2.homeworld}} <br>
+                  <strong>Color de ojos:</strong> {{personobj2.eye_color}} <br>
+                  <strong>Género: </strong>  {{personobj2.gender}} <br>
+                  <strong>Color de cabello: </strong>  {{personobj2.hair_color}} <br>
+                  <strong>Altura: </strong> {{personobj2.height}} <br>
+                  <strong>Peso: </strong>  {{personobj2.mass}} <br>
+                  <strong>Color de piel: </strong> {{personobj2.skin_color}} <br>
                 </p>
               </mat-card-content>
               <mat-card-actions>

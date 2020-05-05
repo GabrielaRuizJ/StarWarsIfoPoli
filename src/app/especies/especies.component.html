@@ -1,34 +1,32 @@
 <div class="cuerpo">
     <div id="contenedortit">
         <img src="../../assets/imagenes/especiestitulo.png" />
-        <mat-form-field class="example-full-width">
-            <mat-label>Buscar una especie</mat-label>
-            <input type="search" matInput placeholder="Nombre de la especie"/>
-        </mat-form-field>
     </div>
-    <div class="cont">
+    <div class="cont" style="display: grid;">
+      <button style="float: right;" mat-flat-button color="primary" (click)="open(content)" >Buscar una especie</button>
+    </div> 
         <div class="cont">
             <mat-accordion>
                 <mat-expansion-panel *ngFor="let espobj of filteredEspecieList; let i=index" >
                   <mat-expansion-panel-header>
                     <img class="especieperfil" src="../../assets/imagenes/especiesperfil.png" /> 
-                    {{i+1}} : {{espobj.name}}
+                    {{espobj.name}}
                   </mat-expansion-panel-header>
                   <mat-card class="example-card">
                     <mat-card-header>
-                      <div mat-card-avatar ></div>
+                      <div mat-card-avatar class="example-header-image" ></div>
                       <mat-card-title>{{espobj.name}}</mat-card-title>
-                      <mat-card-subtitle>Clasificación: {{espobj.classification}}</mat-card-subtitle>
+                      <mat-card-subtitle><strong>Clasificación:</strong> {{espobj.classification}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                       <p>
-                        Rastreo de apertura: {{espobj.designation}} <br>
-                        Altura promedio:  {{espobj.average_height}} <br>
-                        Esperanza de vida promedio:  {{espobj.average_lifespan}} <br>
-                        Color de ojos:  {{espobj.eye_colors}} <br>
-                        Color de cabello:  {{espobj.hair_colors}} <br>
-                        Color de piel:  {{espobj.skin_colors}} <br>
-                        Lenguaje:  {{espobj.language}} <br>
+                        <strong>Designación:</strong>  {{espobj.designation}} <br>
+                        <strong>Altura promedio: </strong> {{espobj.average_height}} <br>
+                        <strong>Esperanza de vida promedio: </strong> {{espobj.average_lifespan}} <br>
+                        <strong>Color de ojos: </strong> {{espobj.eye_colors}} <br>
+                        <strong>Color de cabello: </strong> {{espobj.hair_colors}} <br>
+                        <strong>Color de piel:</strong>  {{espobj.skin_colors}} <br>
+                        <strong>Lenguaje:  </strong>{{espobj.language}} <br>
                       </p>
                     </mat-card-content>
                     <mat-card-actions>
@@ -48,5 +46,67 @@
             </div>
         </div>
     </div>
-</div>
-  
+ 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Especies</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Especie</label>
+        <div class="input-group">
+          <input id="dateOfBirth"  type="search" class="form-control" [(ngModel)]='busqueda'  placeholder="Nombre de la especie" name="dp">
+          <div class="input-group-append">
+            <button mat-button (click)="getOneEspecie(1)"  type="button">
+              <span class="material-icons">
+                search
+                </span>
+            </button>
+          </div>        
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let espobj2 of filteredEspecieList2; let i=index" >
+            <mat-expansion-panel-header>
+              <img class="especieperfil" src="../../assets/imagenes/especiesperfil.png" /> 
+              {{espobj2.name}}
+            </mat-expansion-panel-header>
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image" ></div>
+                <mat-card-title>{{espobj2.name}}</mat-card-title>
+                <mat-card-subtitle><strong>Clasificación:</strong> {{espobj2.classification}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  <strong>Designación:</strong>  {{espobj2.designation}} <br>
+                  <strong>Altura promedio: </strong> {{espobj2.average_height}} <br>
+                  <strong>Esperanza de vida promedio: </strong> {{espobj2.average_lifespan}} <br>
+                  <strong>Color de ojos: </strong> {{espobj2.eye_colors}} <br>
+                  <strong>Color de cabello: </strong> {{espobj2.hair_colors}} <br>
+                  <strong>Color de piel:</strong>  {{espobj2.skin_colors}} <br>
+                  <strong>Lenguaje:  </strong>{{espobj2.language}} <br>
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="controles">
+            <button class="controlboton" mat-button (click)="getOneEspecie(actual2-1)"><span class="material-icons">
+                arrow_back_ios
+                </span>Anterior</button>
+            <label class="controlboton" class="label">Página: {{actual2}}</label>
+            <button mat-button (click)="getOneEspecie(actual2+1)" >Siguiente <span class="material-icons">
+                arrow_forward_ios
+                </span></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ng-template>

@@ -2,28 +2,31 @@
     <div id="contenedortit">
         <img src="../../assets/imagenes/planetas.png" />
     </div>
+    <div class="cont" style="display: grid;">
+      <button style="float: right;" mat-flat-button color="primary" (click)="open(content)" >Buscar un planeta</button>
+    </div> 
         <div class="cont">
             <mat-accordion>
                 <mat-expansion-panel *ngFor="let planetmobj of filteredPlanetList; let i=index" >
                   <mat-expansion-panel-header>
                     <img class="planetaperfil" src="../../assets/imagenes/planetasperfil.png" /> 
-                    {{i+1}} : {{planetmobj.name}}
+                    {{planetmobj.name}}
                   </mat-expansion-panel-header>
                   <mat-card class="example-card">
                     <mat-card-header>
                       <div mat-card-avatar class="example-header-image"></div>
                       <mat-card-title>{{planetmobj.name}}</mat-card-title>
-                      <mat-card-subtitle>Diametro: {{planetmobj.diameter}}</mat-card-subtitle>
+                      <mat-card-subtitle><strong>Diametro:</strong> {{planetmobj.diameter}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                       <p>
-                        Periodo de rotación: {{planetmobj.rotation_period}} <br>
-                        Periodo orbital:  {{planetmobj.orbital_period}} <br>
-                        Gravedad:  {{planetmobj.gravity}} <br>
-                        Población promedio:  {{planetmobj.population}} <br>
-                        Clima:  {{planetmobj.climate}} <br>
-                        Terreno:  {{planetmobj.terrain}} <br>
-                        Porcentaje de agua: {{planetmobj.surface_water}}
+                        <strong>Periodo de rotación:</strong>  {{planetmobj.rotation_period}} <br>
+                        <strong>Periodo orbital:</strong>  {{planetmobj.orbital_period}} <br>
+                        <strong>Gravedad: </strong> {{planetmobj.gravity}} <br>
+                        <strong>Población promedio:</strong>  {{planetmobj.population}} <br>
+                        <strong>Clima:</strong>  {{planetmobj.climate}} <br>
+                        <strong>Terreno: </strong> {{planetmobj.terrain}} <br>
+                        <strong>Porcentaje de agua:</strong> {{planetmobj.surface_water}}
                       </p>
                     </mat-card-content>
                     <mat-card-actions>
@@ -43,4 +46,67 @@
             </div>
         </div>
 </div>
-      
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Planetas</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Planetas</label>
+        <div class="input-group">
+          <input id="dateOfBirth"  type="search" class="form-control" [(ngModel)]='busqueda'  placeholder="Nombre del planeta" name="dp">
+          <div class="input-group-append">
+            <button mat-button (click)="getOnePlanet(1)"  type="button">
+              <span class="material-icons">
+                search
+                </span>
+            </button>
+          </div>        
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let planetobj2 of filteredPlanetList2; let i=index" >
+            <mat-expansion-panel-header>
+              <img class="planetaperfil" src="../../assets/imagenes/planetasperfil.png" /> 
+                    {{planetobj2.name}}
+                  </mat-expansion-panel-header>
+                  <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>{{planetobj2.name}}</mat-card-title>
+                      <mat-card-subtitle><strong>Diametro:</strong> {{planetobj2.diameter}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p>
+                        <strong>Periodo de rotación:</strong>  {{planetobj2.rotation_period}} <br>
+                        <strong>Periodo orbital:</strong>  {{planetobj2.orbital_period}} <br>
+                        <strong>Gravedad: </strong> {{planetobj2.gravity}} <br>
+                        <strong>Población promedio:</strong>  {{planetobj2.population}} <br>
+                        <strong>Clima:</strong>  {{planetobj2.climate}} <br>
+                        <strong>Terreno: </strong> {{planetobj2.terrain}} <br>
+                        <strong>Porcentaje de agua:</strong> {{planetobj2.surface_water}}
+                      </p>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="controles">
+            <button class="controlboton" mat-button (click)="getOnePlanet(actual2-1)"><span class="material-icons">
+                arrow_back_ios
+                </span>Anterior</button>
+            <label class="controlboton" class="label">Página: {{actual2}}</label>
+            <button mat-button (click)="getOnePlanet(actual2+1)" >Siguiente <span class="material-icons">
+                arrow_forward_ios
+                </span></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ng-template>
